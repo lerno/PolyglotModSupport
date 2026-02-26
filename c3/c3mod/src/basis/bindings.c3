@@ -36,26 +36,9 @@ struct CppZigPointerPair
     uptr zig;
 }
 
-struct InteropVec2
-{
-    float x;
-    float y;
-}
-
-struct InteropVec3
-{
-    float x;
-    float y;
-    float z;
-}
-
-struct InteropVec4
-{
-    float x;
-    float y;
-    float z;
-    float w;
-}
+alias InteropVec2 = float[<2>];
+alias InteropVec3 = float[<3>];
+alias InteropVec4 = float[<4>];
 
 struct InteropQuaternion
 {
@@ -101,13 +84,7 @@ struct InteropMat4
     float e44;
 }
 
-struct InteropColor
-{
-    char r;
-    char g;
-    char b;
-    char a;
-}
+alias InteropColor = char[<4>];
 
 struct InteropTypedPtr
 {

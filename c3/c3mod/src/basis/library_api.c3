@@ -1,23 +1,32 @@
 module basis;
 
 // Note! Keep this in sync with the C++ side.
-enum LibraryType : const uint
+constdef LibraryType : uint
 {
     UNKNOWN = 0,
     NATIVE_DYNAMIC_LIBRARY = 1,
     WASM_CLIENT = 2,
     WASM_SERVER = 3,
 }
+// Consider making in an enum, since it then can be easily printed
+// enum LibraryType : uint
+// {
+//    UNKNOWN,
+//    NATIVE_DYNAMIC_LIBRARY,
+//    WASM_CLIENT,
+//    WASM_SERVER,
+// }
+
 
 // Note! Keep this in sync with the C++ side.
-enum BasisInitFlags : const uint
+constdef BasisInitFlags : uint
 {
-    NONE = 0,
-    BIND_GOOFY = (1 << 0),
-    BIND_TIMBRE = (1 << 1),
-    BIND_NEMO = (1 << 2),
-    BIND_MERLIN = (1 << 3),
-    BIND_TRAMPOLINE = (1 << 4),
+    NONE            = 0,
+    BIND_GOOFY      = 1 << 0,
+    BIND_TIMBRE     = 1 << 1,
+    BIND_NEMO       = 1 << 2,
+    BIND_MERLIN     = 1 << 3,
+    BIND_TRAMPOLINE = 1 << 4,
 }
 
 InteropTypedPtr _gLibCppPtr = { .ptr = 0, .type = 0 };
@@ -37,19 +46,19 @@ fn LibraryType getZigLibraryType()
 
 // Exported engine C-api:
 
-fn uint basisInit(InteropTypedPtr libCppPtr) @export("basisInit")
+fn BasisInitFlags basisInit(InteropTypedPtr libCppPtr) @export("basisInit")
 {
     _gLibCppPtr = libCppPtr;
 
-    uint flags = 0;
+    BasisInitFlags flags;
 
     // By default we bind everything.
     // TODO: Make this adjustable, eg. using zig build system options.
-    // flags |= (uint)BasisInitFlags.BIND_GOOFY;
-    // flags |= (uint)BasisInitFlags.BIND_TIMBRE;
-    // flags |= (uint)BasisInitFlags.BIND_NEMO;
-    // flags |= (uint)BasisInitFlags.BIND_MERLIN;
-    // flags |= (uint)BasisInitFlags.BIND_TRAMPOLINE;
+    // flags |= BIND_GOOFY;
+    // flags |= BIND_TIMBRE;
+    // flags |= BIND_NEMO;
+    // flags |= BIND_MERLIN;
+    // flags |= BIND_TRAMPOLINE;
 
     return flags;
 }

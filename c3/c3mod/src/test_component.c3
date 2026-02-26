@@ -1,7 +1,7 @@
 module c3mod;
 import basis;
 
-fn void registerTestComponent(basis::ComponentRegCallback callback)
+fn void registerTestComponent(ComponentRegCallback callback)
 {
 	basis::initComponentType{TestComponent}(
 		"c3.TestComponent",

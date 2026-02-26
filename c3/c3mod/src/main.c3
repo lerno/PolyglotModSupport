@@ -12,7 +12,7 @@ fn uint getVersionNumber(uint versionNumberType) @export("getVersionNumber")
 	return (versionNumberType == 0) ? BASIS_API_VERSION_NUMBER : MEANSLIB_API_VERSION_NUMBER;
 }
 
-fn void initLibrary(basis::ComponentRegCallback callback) @export("initLibrary")
+fn void initLibrary(ComponentRegCallback callback) @export("initLibrary")
 {
     //means.app = basis.app.create(means.MeansApp, meansAllocator);
 

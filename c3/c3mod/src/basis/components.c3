@@ -1,6 +1,6 @@
 module basis;
 
-enum ComponentFlags : const uint
+constdef ComponentFlags : uint
 {
     NONE = 0,
     HAS_UPDATE = (1 << 0),
@@ -24,7 +24,7 @@ fn void initComponentType(
 	String componentTypeName,
     String componentContextTypeName,
 	uint updateSortingKey,
-	basis::ComponentRegCallback callback) <ComponentType>
+	ComponentRegCallback callback) <ComponentType>
 {
 	ComponentFactory{ComponentType}* factory = mem::new(ComponentFactory{ComponentType});
 	factory.init();
